@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/cc5092/cc-node-socket/issues"
   },
-  "homepage": "https://github.com/cc5092/cc-node-socket#readme"
+  "homepage": "https://github.com/cc5092/cc-node-socket#readme",
+  "dependencies": {
+    "ByteBuffer": "^0.2.6",
+    "ExBuffer": "^0.2.4",
+    "base64id": "^0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.2.1"
+  }
 }
