@@ -1,38 +1,31 @@
 var should = require('should');
 var Server = require('../lib/server');
+var Client = require('../lib/client');
 var net = require('net');
 var ExBuffer = require('ExBuffer');
 var ByteBuffer = require('ByteBuffer');
+var Connection = require('../lib/connection');
 
 describe('server', function() {
-
   var port = 3000;
-
-
-  it('must listen', function(done) {
+  it('server must listen', function(done) {
     var server = new Server(port);
-    var msg = 'abcdefg';
-    var buf = new ByteBuffer();
-    var ret = buf.string(JSON.stringify(msg)).packWithHead();
-    var client = net.connect(port, function() {
-      client.write(ret);
-    });
-
-    server.on('data', function(data) {
-      data.should.equal(msg);
+    server.on('listening', function() {
       done();
     });
-
   });
 
-  /*
-  server.onClose = function() {
-    console.log('server close');
-  }
-  server.onError = function(err) {
-    console.err(err);
-  }*/
-
-  //server.listen();
-
+  it('client must connect', function(done) {
+    var server = new Server(port);
+    var client = new Client(port);
+    done();
+  });
 });
+/*
+describe('connection', function() {
+  it('connection function', function() {
+    var s = {};
+    var c = new Connection(s, s)
+    c.should.be.an.instanceof('Connection');
+  });
+})*/
