@@ -4,7 +4,7 @@
   "description": "cc node socket",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "NODE_ENV=development ./node_modules/.bin/mocha --harmony --require should test/"
   },
   "repository": {
     "type": "git",
